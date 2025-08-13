@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@barclayssportshub.com",
+      "password": "admin123",
+      "role": "admin",
+      "isBlock": false,
+      "cart": [],
+      "orders": [],
+      "wishlist": [],
+      "created_at": "2023-11-15"
+    },
+    {
+      "id": "780a",
+      "name": "Anas",
+      "email": "muhammedanas247474@gmail.com",
+      "password": "123456789"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Premium Football",
+      "category": "football",
+      "price": 49.99,
+      "image": "/images/football.jpg",
+      "description": "Official match football with high-quality construction",
+      "stock": 100,
+      "rating": 4.8,
+      "brand": "Nike"
+    },
+    {
+      "id": "2",
+      "name": "Running Shoes",
+      "category": "running",
+      "price": 89.99,
+      "image": "/images/running-shoes.jpg",
+      "description": "Lightweight running shoes with cushioning technology",
+      "stock": 75,
+      "rating": 4.6,
+      "brand": "Adidas"
+    }
+  ],
+  "orders": [],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Football"
+    },
+    {
+      "id": "2",
+      "name": "Running"
+    },
+    {
+      "id": "3",
+      "name": "Basketball"
+    },
+    {
+      "id": "4",
+      "name": "Tennis"
+    }
+  ]
+}
