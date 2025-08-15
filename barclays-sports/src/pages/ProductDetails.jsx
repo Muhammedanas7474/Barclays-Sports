@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 function ProductDetails() {
   return (
     <div>
-      <h1>this is Productdetai;s page</h1>
+      <Navbar/>
+      <h1>this is Productdetails page</h1>
+      
     </div>
   )
 }

@@ -1,13 +1,13 @@
-
-import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Heart, Menu, X, Bell } from 'lucide-react';
+import React, { useState } from "react";
+import { Search, ShoppingCart, User, Heart, Menu, X, Bell } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   // Mock user for demo - replace with your auth context
-  const user = { name: 'John Doe', email: 'john@example.com', avatar: null };
+  const user = { name: "John Doe", email: "john@example.com", avatar: null };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [cartCount] = useState(3);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -15,14 +15,15 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    console.log("Searching for:", searchQuery);
   };
 
   const NavButton = ({ href, children, isActive = false, onClick }) => (
     <button
       onClick={onClick}
-      className={`text-sm font-medium transition-colors duration-200 hover:text-amber-600 ${isActive ? 'text-amber-600' : 'text-gray-700'
-        }`}
+      className={`text-sm font-medium transition-colors duration-200 hover:text-amber-600 ${
+        isActive ? "text-amber-600" : "text-gray-700"
+      }`}
     >
       {children}
     </button>
@@ -31,8 +32,9 @@ const Navbar = () => {
   const MobileNavButton = ({ href, children, isActive = false, onClick }) => (
     <button
       onClick={onClick}
-      className={`block w-full text-left py-3 text-base font-medium transition-colors duration-200 ${isActive ? 'text-amber-600' : 'text-gray-700 hover:text-amber-600'
-        }`}
+      className={`block w-full text-left py-3 text-base font-medium transition-colors duration-200 ${
+        isActive ? "text-amber-600" : "text-gray-700 hover:text-amber-600"
+      }`}
     >
       {children}
     </button>
@@ -55,7 +57,7 @@ const Navbar = () => {
               />
               <div className="flex flex-col">
                 <span className="text-xl font-serif font-bold text-gray-900 group-hover:text-amber-600 transition-colors duration-200">
-                  Braclays
+                  Barclays
                 </span>
                 <span className="text-xs text-gray-500 -mt-1">SPORTS</span>
               </div>
@@ -83,38 +85,43 @@ const Navbar = () => {
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavButton isActive={true}>Home</NavButton>
-            <NavButton>Products</NavButton>
-            <NavButton>Categories</NavButton>
-            <NavButton>Deals</NavButton>
+     
+            <NavLink
+              to="/"
+              style={({ isActive }) => ({
+                fontWeight: isActive ? "bold" : "normal",
+                color: isActive ? "red" : "black",
+              })}
+            >
+              Home
+            </NavLink>
+               <NavLink
+              to="/products"
+              style={({ isActive }) => ({
+                fontWeight: isActive ? "bold" : "normal",
+                color: isActive ? "red" : "black",
+              })}
+            >
+              Products
+            </NavLink>
+
+            
           </div>
 
           {/* Action Buttons - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <>
-                {/* Notifications */}
-                <button className="p-2 text-gray-400 hover:text-amber-600 transition-colors duration-200 relative">
-                  <Bell size={20} />
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    2
-                  </span>
-                </button>
-
                 {/* Wishlist */}
-                <button className="p-2 text-gray-400 hover:text-amber-600 transition-colors duration-200 relative">
+                <NavLink to="/whisht" className="p-2 text-gray-400 hover:text-amber-600 transition-colors duration-200 relative">
                   <Heart size={20} />
-                </button>
+                </NavLink>
 
                 {/* Cart */}
-                <button className="p-2 text-gray-400 hover:text-amber-600 transition-colors duration-200 relative">
+                <NavLink to="/cart" className="p-2 text-gray-400 hover:text-amber-600 transition-colors duration-200 relative">
                   <ShoppingCart size={20} />
-                  {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      {cartCount}
-                    </span>
-                  )}
-                </button>
+                 
+                </NavLink>
 
                 {/* Profile Dropdown */}
                 <div className="relative">
@@ -125,7 +132,9 @@ const Navbar = () => {
                     <div className="w-8 h-8 bg-gray-300 rounded-full border-2 border-gray-200 flex items-center justify-center">
                       <User size={16} className="text-gray-600" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">{user.name}</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      {user.name}
+                    </span>
                   </button>
 
                   {isProfileOpen && (
@@ -208,7 +217,10 @@ const Navbar = () => {
 
           {/* Mobile Navigation */}
           <div className="px-4 py-2 space-y-1">
-            <MobileNavButton isActive={true} onClick={() => setIsMenuOpen(false)}>
+            <MobileNavButton
+              isActive={true}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Home
             </MobileNavButton>
             <MobileNavButton onClick={() => setIsMenuOpen(false)}>
@@ -231,7 +243,9 @@ const Navbar = () => {
                     <User size={20} className="text-gray-600" />
                   </div>
                   <div>
-                    <div className="text-base font-medium text-gray-800">{user.name}</div>
+                    <div className="text-base font-medium text-gray-800">
+                      {user.name}
+                    </div>
                     <div className="text-sm text-gray-500">{user.email}</div>
                   </div>
                 </div>
